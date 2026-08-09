@@ -5,15 +5,15 @@
   "keywords": [
     "n8n-community-node-package"
   ],
-  "homepage": "https://github.com/sanderspiegelaar/n8n-nodes-webclaw",
+  "homepage": "https://github.com/SanderSpiegelaar/n8n-nodes-webclaw",
   "license": "MIT",
   "author": {
     "name": "Sander Spiegelaar",
-    "email": "sanderspiegelaar@gmail.com"
+    "email": "dev@samder.gg"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanderspiegelaar/n8n-nodes-webclaw.git"
+    "url": "https://github.com/SanderSpiegelaar/n8n-nodes-webclaw.git"
   },
   "files": [
     "CHANGELOG.md",
