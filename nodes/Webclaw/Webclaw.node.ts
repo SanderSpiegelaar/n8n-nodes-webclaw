@@ -48,7 +48,7 @@ export class Webclaw implements INodeType {
 			},
 		],
 		requestDefaults: {
-			baseURL: 'https://webclaw.api.sander.gg',
+			baseURL: '={{$credentials.baseUrl}}',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'POST',
-								url: '/v1/batch',
+								url: '/batch',
 							},
 						},
 					},
@@ -99,7 +99,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'POST',
-								url: '/v1/crawl',
+								url: '/crawl',
 							},
 						},
 					},
@@ -111,7 +111,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'POST',
-								url: '/v1/extract',
+								url: '/extract',
 							},
 						},
 					},
@@ -123,7 +123,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'GET',
-								url: '/health',
+								url: '={{$credentials.baseUrl.replace(/\\/v1\\/?$/, "") + "/health"}}',
 							},
 						},
 					},
@@ -135,7 +135,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'POST',
-								url: '/v1/map',
+								url: '/map',
 							},
 						},
 					},
@@ -147,7 +147,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'POST',
-								url: '/v1/scrape',
+								url: '/scrape',
 							},
 						},
 					},
@@ -159,7 +159,7 @@ export class Webclaw implements INodeType {
 						routing: {
 							request: {
 								method: 'POST',
-								url: '/v1/summarize',
+								url: '/summarize',
 							},
 						},
 					},

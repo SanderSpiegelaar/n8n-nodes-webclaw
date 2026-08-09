@@ -18,7 +18,7 @@ Follow the [n8n community node installation guide](https://docs.n8n.io/integrati
 
 ## Credentials
 
-Create a **Webclaw API** credential and enter your Webclaw API key. The credential is stored securely by n8n and sent with each request using the `Authorization: Bearer <API key>` header.
+Create a **Webclaw API** credential, configure the Webclaw API base URL, and enter your API key. The default base URL is `https://api.webclaw.io/v1`. The API key is stored securely by n8n and sent with each request using the `Authorization: Bearer <API key>` header.
 
 ## Compatibility
 
@@ -26,7 +26,7 @@ The node is built with n8n node API version 1 and tested against `n8n-workflow` 
 
 ## Usage
 
-Add the **Webclaw** node to a workflow, choose an operation, and provide the requested URL or URLs. The node sends requests to `https://webclaw.api.sander.gg` and returns the API response as n8n items.
+Add the **Webclaw** node to a workflow, choose an operation, and provide the requested URL or URLs. The node sends requests to the base URL configured in the selected credential and returns the API response as n8n items.
 
 For extraction, choose one of these methods:
 

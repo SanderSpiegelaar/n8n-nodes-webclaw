@@ -20,6 +20,15 @@ export class WebclawApi implements ICredentialType {
 
 	properties: INodeProperties[] = [
 		{
+			displayName: 'Base URL',
+			name: 'baseUrl',
+			type: 'string',
+			default: 'https://api.webclaw.io/v1',
+			required: true,
+			placeholder: 'https://api.example.com/v1',
+			description: 'The base URL of the Webclaw API, without a trailing slash',
+		},
+		{
 			displayName: 'API Key',
 			name: 'apiKey',
 			type: 'string',
@@ -43,7 +52,7 @@ export class WebclawApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://webclaw.api.sander.gg',
+			baseURL: '={{$credentials.baseUrl.replace(/\\/v1\\/?$/, "")}}',
 			url: '/health',
 			method: 'GET',
 		},
