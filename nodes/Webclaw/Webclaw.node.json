@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-webclaw",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Data & Storage", "Development"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/SanderSpiegelaar/n8n-nodes-webclaw#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/sanderspiegelaar/n8n-nodes-webclaw#readme"
+			}
+		]
+	}
+}

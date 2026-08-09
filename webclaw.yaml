@@ -1,0 +1,464 @@
+openapi: 3.0.0
+info:
+  title: webclaw
+  version: 1.0.0
+paths:
+  /v1/scrape:
+    post:
+      summary: Scrape
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_scrape_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+          example: application/json
+      requestBody:
+        $ref: '#/components/requestBodies/scrape'
+      servers:
+        - url: https://webclaw.api.sander.gg
+  /health:
+    get:
+      summary: Healthcheck
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_healthcheck_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      servers:
+        - url: https://webclaw.api.sander.gg
+  /v1/crawl:
+    post:
+      summary: Crawl
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_crawl_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/crawl'
+      servers:
+        - url: https://webclaw.api.sander.gg
+  /v1/batch:
+    post:
+      summary: Batch
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_batch_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/batch'
+      servers:
+        - url: https://webclaw.api.sander.gg
+  /v1/map:
+    post:
+      summary: Map
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_map_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/map'
+      servers:
+        - url: https://webclaw.api.sander.gg
+  /v1/summarize:
+    post:
+      summary: Summarize
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_summarize_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/summarize'
+      servers:
+        - url: https://webclaw.api.sander.gg
+  /v1/extract:
+    post:
+      summary: Extract (LLM Prompt)
+      operationId: users_s_spiegelaar_documents_bruno_webclaw_extract_llm_prompt_yml
+      description: ''
+      tags:
+        - ''
+      responses:
+        '200':
+          description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/extract_llm_prompt'
+      servers:
+        - url: https://webclaw.api.sander.gg
+      x-bruno-variants:
+        - summary: Extract (Schema)
+          operationId: users_s_spiegelaar_documents_bruno_webclaw_extract_schema_yml
+          description: ''
+          tags:
+            - ''
+          responses:
+            '200':
+              description: ''
+          requestBody:
+            $ref: '#/components/requestBodies/extract_schema'
+          servers:
+            - url: https://webclaw.api.sander.gg
+servers: []
+components:
+  schemas:
+    scrape:
+      type: object
+      properties:
+        url:
+          type: string
+        formats:
+          type: array
+          items:
+            type: string
+        exclude_selectors:
+          type: array
+          items:
+            type: string
+      example:
+        url: https://lisanspiegelaar.nl
+        formats:
+          - markdown
+          - llm
+        exclude_selectors:
+          - nav
+          - footer
+          - .sidebar
+    crawl:
+      type: object
+      properties:
+        url:
+          type: string
+        max_depth:
+          type: integer
+        max_pages:
+          type: integer
+        use_sitemap:
+          type: boolean
+      example:
+        url: https://lisanspiegelaar.nl
+        max_depth: 3
+        max_pages: 50
+        use_sitemap: true
+    batch:
+      type: object
+      properties:
+        urls:
+          type: array
+          items:
+            type: string
+        formats:
+          type: array
+          items:
+            type: string
+        concurrency:
+          type: integer
+      example:
+        urls:
+          - https://lasercleaning.pt
+          - https://lisanspiegelaar.nl
+          - https://ondigitalmarketing.nl
+        formats:
+          - markdown
+          - json
+        concurrency: 5
+    map:
+      type: object
+      properties:
+        url:
+          type: string
+      example:
+        url: https://lisanspiegelaar.nl
+    summarize:
+      type: object
+      properties:
+        url:
+          type: string
+        max_sentences:
+          type: integer
+      example:
+        url: https://lasercleaning.pt
+        max_sentences: 5
+    extract_llm_prompt:
+      type: object
+      properties:
+        url:
+          type: string
+        prompt:
+          type: string
+      example:
+        url: https://lasercleaning.pt
+        prompt: All service information
+    extract_schema:
+      type: object
+      properties:
+        url:
+          type: string
+        schema:
+          type: object
+          properties:
+            type:
+              type: string
+            properties:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    required:
+                      type: array
+                      items:
+                        type: string
+                    properties:
+                      type: object
+                      properties:
+                        contact_information:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            required:
+                              type: array
+                              items:
+                                type: string
+                            properties:
+                              type: object
+                              properties:
+                                address:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                email:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                    format:
+                                      type: string
+                                phone:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                service_areas:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                    items:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                        custom_solutions:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            required:
+                              type: array
+                              items:
+                                type: string
+                            properties:
+                              type: object
+                              properties:
+                                description:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                link:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                    format:
+                                      type: string
+                        services:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                required:
+                                  type: array
+                                  items:
+                                    type: string
+                                properties:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                    description:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                    link:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                        format:
+                                          type: string
+                                    features:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                        items:
+                                          type: object
+                                          properties:
+                                            type:
+                                              type: string
+            required:
+              type: array
+              items:
+                type: string
+      example:
+        url: https://lasercleaning.pt
+        schema:
+          type: object
+          properties:
+            data:
+              type: object
+              required:
+                - contact_information
+                - custom_solutions
+                - services
+              properties:
+                contact_information:
+                  type: object
+                  required:
+                    - address
+                    - email
+                    - phone
+                    - service_areas
+                  properties:
+                    address:
+                      type: string
+                    email:
+                      type: string
+                      format: email
+                    phone:
+                      type: string
+                    service_areas:
+                      type: array
+                      items:
+                        type: string
+                custom_solutions:
+                  type: object
+                  required:
+                    - description
+                    - link
+                  properties:
+                    description:
+                      type: string
+                    link:
+                      type: string
+                      format: uri
+                services:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - description
+                      - link
+                      - features
+                    properties:
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      link:
+                        type: string
+                        format: uri
+                      features:
+                        type: array
+                        items:
+                          type: string
+          required:
+            - data
+  requestBodies:
+    scrape:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/scrape'
+      description: ''
+      required: true
+    crawl:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/crawl'
+      description: ''
+      required: true
+    batch:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/batch'
+      description: ''
+      required: true
+    map:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/map'
+      description: ''
+      required: true
+    summarize:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/summarize'
+      description: ''
+      required: true
+    extract_llm_prompt:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/extract_llm_prompt'
+      description: ''
+      required: true
+    extract_schema:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/extract_schema'
+      description: ''
+      required: true
+  securitySchemes: {}
