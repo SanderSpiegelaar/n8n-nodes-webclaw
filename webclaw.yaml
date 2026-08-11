@@ -132,10 +132,21 @@ components:
           type: array
           items:
             type: string
+            enum:
+              - markdown
+              - llm
+              - text
+              - json
+        include_selectors:
+          type: array
+          items:
+            type: string
         exclude_selectors:
           type: array
           items:
             type: string
+        only_main_content:
+          type: boolean
       example:
         url: https://lisanspiegelaar.nl
         formats:

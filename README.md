@@ -13,7 +13,7 @@ Follow the [n8n community node installation guide](https://docs.n8n.io/integrati
 - **Extract**: Extract information from a page using either a natural-language prompt or a JSON Schema.
 - **Healthcheck**: Check the availability of the Webclaw API.
 - **Map**: Discover URLs on a website.
-- **Scrape**: Scrape a single page in Markdown, LLM, or JSON format and optionally exclude CSS selectors.
+- **Scrape**: Scrape a single page in Markdown, LLM, text, or JSON format; optionally include or exclude CSS selectors and limit extraction to the main content.
 - **Summarize**: Summarize a page with a configurable sentence limit.
 
 ## Credentials

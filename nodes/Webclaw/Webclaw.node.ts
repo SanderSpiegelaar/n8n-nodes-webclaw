@@ -208,7 +208,7 @@ export class Webclaw implements INodeType {
 				],
 				default: ['markdown'],
 				description: 'The output formats to request',
-				displayOptions: showForOperations('batch', 'scrape'),
+				displayOptions: showForOperations('batch'),
 				routing: {
 					request: {
 						body: {
@@ -218,24 +218,88 @@ export class Webclaw implements INodeType {
 				},
 			},
 			{
-				displayName: 'Exclude Selectors',
-				name: 'excludeSelectors',
-				type: 'string',
-				typeOptions: {
-					multipleValues: true,
-					multipleValueButtonText: 'Add Selector',
-				},
-				default: [],
-				placeholder: 'nav',
-				description: 'CSS selectors to exclude from the scraped content',
+				displayName: 'Options',
+				name: 'options',
+				type: 'collection',
+				placeholder: 'Add Option',
+				default: {},
 				displayOptions: showForOperations('scrape'),
-				routing: {
-					request: {
-						body: {
-							exclude_selectors: '={{$value}}',
+				options: [
+					{
+						displayName: 'Exclude Selectors',
+						name: 'excludeSelectors',
+						type: 'string',
+						typeOptions: {
+							multipleValues: true,
+							multipleValueButtonText: 'Add Selector',
+						},
+						default: [],
+						placeholder: 'nav',
+						description: 'CSS selectors to remove from the page before extraction',
+						routing: {
+							request: {
+								body: {
+									exclude_selectors: '={{$value}}',
+								},
+							},
 						},
 					},
-				},
+					{
+						displayName: 'Formats',
+						name: 'formats',
+						type: 'multiOptions',
+						options: [
+							{ name: 'JSON', value: 'json' },
+							{ name: 'LLM', value: 'llm' },
+							{ name: 'Markdown', value: 'markdown' },
+							{ name: 'Text', value: 'text' },
+						],
+						default: ['markdown'],
+						description: 'The output formats to include',
+						routing: {
+							request: {
+								body: {
+									formats: '={{$value}}',
+								},
+							},
+						},
+					},
+					{
+						displayName: 'Include Selectors',
+						name: 'includeSelectors',
+						type: 'string',
+						typeOptions: {
+							multipleValues: true,
+							multipleValueButtonText: 'Add Selector',
+						},
+						default: [],
+						placeholder: 'main article',
+						description:
+							'CSS selectors to extract exclusively; only matching content will be included',
+						routing: {
+							request: {
+								body: {
+									include_selectors: '={{$value}}',
+								},
+							},
+						},
+					},
+					{
+						displayName: 'Only Main Content',
+						name: 'onlyMainContent',
+						type: 'boolean',
+						default: false,
+						description:
+							'Whether to extract only the main article or content element, ignoring sidebars, headers, and footers',
+						routing: {
+							request: {
+								body: {
+									only_main_content: '={{$value}}',
+								},
+							},
+						},
+					},
+				],
 			},
 			{
 				displayName: 'Maximum Depth',
