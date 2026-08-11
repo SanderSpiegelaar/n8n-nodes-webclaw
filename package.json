@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-webclaw",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "n8n community node for scraping, crawling, mapping, summarizing, and extracting website data with Webclaw",
   "keywords": [
     "n8n-community-node-package"
